@@ -1,0 +1,31 @@
+header{
+    display: flex;
+    margin-bottom: 2rem;
+    font-family: 'Fredoka', sans-serif;
+    color: blue;
+}
+
+h1 {
+    text-align: center;   
+}
+
+
+section  {
+    background-color: orange;
+    width: 70%;
+    height: auto;
+    margin: auto;
+    padding: 20px;
+}
+input[type=submit] {
+    text-align: right;
+  }
+
+footer{
+    font-family: 'Fredoka', sans-serif;
+    text-align: center;
+}
+
+footer ul li{
+    display: inline;
+  }
