@@ -1,25 +1,33 @@
 header{
-    display: flex;
     margin-bottom: 2rem;
     font-family: 'Fredoka', sans-serif;
-    color: blue;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-align: center;
+    height: 5rem;
+    background-color: #112B3C;
+    color: #fff;
 }
 
-h1 {
-    text-align: center;   
+header h1 {
+    padding-top: 20px;
 }
+
 
 
 section  {
-    background-color: orange;
-    width: 70%;
+    width: 50%;
     height: auto;
     margin: auto;
+    margin-top: 2rem;
     padding: 20px;
 }
-input[type=submit] {
-    text-align: right;
-  }
+
+.todo {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
 
 footer{
     font-family: 'Fredoka', sans-serif;
@@ -29,3 +37,22 @@ footer{
 footer ul li{
     display: inline;
   }
+
+
+@media (max-width: 1024px) {
+  section {
+    width: 50%;
+  }
+}
+  
+@media (max-width: 768px) {
+  section {
+    width: 70%;
+  }
+}
+  
+@media (max-width: 528px) {
+  section {
+    width: 100%;
+  }
+}

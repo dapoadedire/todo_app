@@ -4,57 +4,41 @@
 
 <html lang="en">
     <head>      
-        <meta name="author",
-        content="Dapo Adedire",
-        width=device-width,
-        initial_scale=1.0, 
-        minimum-scale=0.5, 
-        maximum-scale=3.0, 
-        charset="utf-8", 
-        initial-scale=1 />
-
         <link href="{% static 'todo.css' %}" rel="stylesheet">
         <title>To Do</title>
-        <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;373&family=Lato:wght@400&family=League+Spartan:wght@400&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </head>
 
     <body>
         <header>
             <h1>TODO APP</h1>
         </header>
-
         <section>
-            <div class="add-todo">
+            <div class="container">
                 <form method="post" action="/addTodo/">{% csrf_token %}
-                    <input type="text" placeholder="" name="content"/>
-                    <input type="submit" name="submit" value="Add"/>
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" placeholder="Add task ..." aria-label="Add task..." aria-describedby="button-addon2" name ="content" required>
+                      <button class="btn btn-success" type="submit" name= "submit" id="button-addon2">Add</button>
+                    </div>
                 </form>
+              
+    
+                <div class="todo">
+                    <ul class="list-group">
+                        {% for todo_item in all_items %}
+                           <li class="list-group-item d-flex justify-content-between align-items-start">
+                             <div class="ms-2 me-auto">
+                              <div class="fw-bold">{{ todo_item.content }}</div>
+                             </div>
+                             <form id= "delete" method="post" action="/delTodo/{{ todo_item.id }}/">{% csrf_token %}
+                                <button class="btn btn-danger" type="submit" name= "submit" id="button-addon2">Delete</button>
+                               </form>
+                           </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-
-            <div class="todo-list">
-                <ul>
-                    {% for todo_item in all_items %}
-                       {% if todo_item.status == True %}
-                       <strike>
-                        <li>{{ todo_item.content }}
-                            <form method="post" action="/delTodo/{{ todo_item.id }}/">{% csrf_token %}
-                                <input type="submit" name="submit" value="Delete"/>
-                            </form>
-                        </li>
-                       </strike>
-                       {% else %}
-                       <li>{{ todo_item.content }}
-                        <form method="post" action="/delTodo/{{ todo_item.id }}/">{% csrf_token %}
-                            <input type="submit" name="submit" value="Delete"/>
-                        </form>
-                       </li>
-                       {% endif%}
-                    {% endfor %}
-                </ul>                
-            </div>
-
-
-
         </section>
         <footer>
             <p>Designed and built by <a href="http://wa.me/2349038388723" target="_blank">Dapo Adedire</a> in Nigeria</p>

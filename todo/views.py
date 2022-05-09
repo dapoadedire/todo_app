@@ -8,9 +8,6 @@ def todoView(request):
         {'all_items': all_todo_items})
 
 def addTodo(request):
-    #Create a new todo item
-    #save the item
-    #redirect back to /todo/
     new_item= TodoItem(content= request.POST['content'])
     new_item.save()
     return redirect('/')

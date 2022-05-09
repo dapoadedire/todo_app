@@ -4,7 +4,7 @@ from django.db import models
 
 class TodoItem(models.Model):
     content = models.TextField()
-    status = models.BooleanField(default=False)
+    # status = models.BooleanField(default=False)
     created = models.DateTimeField(auto_now_add=True)
 
 
